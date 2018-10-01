@@ -33,7 +33,7 @@ ggplot(aes(year,wm))+
 
 #Graph depicts the weighted mean of lifeExp over the years.
 
-#easliy computed the weighted mean using weighted.mean() function which i learnt during the development of this code.
+#Easliy computed the weighted mean using weighted.mean() function which i learnt during the development of this code.
 
 
 
