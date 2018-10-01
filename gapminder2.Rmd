@@ -1,0 +1,97 @@
+---
+title: "Gapminder2"
+output: html_document
+---
+
+```{r}
+library(tidyverse)
+library(gapminder)
+```
+
+#To Get the maximum and minimum of GDP per capita for all continents.
+
+
+```{r}
+ gapminder %>% 
+  group_by(continent) %>% 
+  summarise(max=max(gdpPercap),min=min(gdpPercap))
+
+```
+#Compute a trimmed mean of life expectancy for different years. Or a weighted mean, weighting by population. Just try something other than the plain vanilla mean.
+
+```{r}
+gapminder %>% 
+  group_by(year) %>% 
+ mutate(wm= weighted.mean(lifeExp,pop))
+ 
+```
+
+
+
+
+
+# How is life expectancy changing over time on different continents?
+
+```{r}
+gapminder %>% 
+  group_by(continent,lifeExp,year)
+  
+
+gapminder %>% 
+  ggplot(aes(lifeExp))+ #to develop a ggplot with lifeExp on x-axis. 
+  geom_histogram(aes(fill=continent),bins=30)+ #developed a binned histogram  with each continent having its                                                        separate colour.
+  ggtitle("Life Expactancy over the Years")+ #added title
+  xlab("LifeExp")+ #x-axis label
+  ylab("Frequency")+ #y-axis label
+  facet_wrap(~year,scales="free_x") #created individual plots for each year in the Gapminder dataset with                                         their individual scales.
+  
+  
+  
+```
+#Comments:
+#From the table we see that with time each countries lifeExp has increased.
+
+#From the graphs we infer that over the years for continents like Africa and Asia the lifeExp has increased,ie. in the earlier times the frequency of lifeExp years like 30 and 40 was high which has decreased over time and lifeExp like 70 and 80 have high frequnecy now. While continents like Europe and Oceania have maintained a high life throughout.
+
+#Easy to develop the code but made me think whether to wrap by year or continent.Referred to cm007.
+
+
+
+
+
+
+#Report the absolute and/or relative abundance of countries with low life expectancy over time by continent: Compute some measure of worldwide life expectancy – you decide – a mean or median or some other quantile or perhaps your current age. Then determine how many countries on each continent have a life expectancy less than this benchmark, for each year.
+
+```{r}
+gapminder %>% 
+summarise(mu=mean(lifeExp)) #to calculate the mean life expectancy
+
+gapminder %>% 
+
+  filter(lifeExp<mean(lifeExp)) %>% 
+  #filtered all rows that have lifeExp less than the mean lifeExp.
+  
+  count(continent,year) 
+#Counts the number of countries yearwise in the continents that have lifExp less than the mean lifeExp.
+  
+  
+gapminder %>% 
+filter(lifeExp<mean(lifeExp)) %>% 
+ggplot(aes(year))+
+facet_wrap(~continent,scales="free_x")+
+  #returns the plot for each continent separately with their own individual scales
+
+  geom_bar()+ 
+  #creats the bar plot counting the countiries within each continent,for each year having lifeExp less than the mean lifeExp. 
+  ggtitle("count of lifeExp less than the mean lifeExp")+ # added title
+  xlab("Year")+ #x-axis lable
+  ylab("LifeExp") #y-axis lable
+
+   
+```
+
+#Comments: 
+
+#Output shows that most of the countires in Africa and Asia have life expactancy less than the mean life Expactancy.
+
+#It was interesting to develop this code that made me think how I should count the countries in each continent that have lifeExp less than the mean LifeExp and creat an appropriate graph for it using facet_wrap.
