@@ -8,27 +8,32 @@ library(tidyverse)
 library(gapminder)
 ```
 
-#To Get the maximum and minimum of GDP per capita for all continents.
 
-
-```{r}
- gapminder %>% 
-  group_by(continent) %>% 
-  summarise(max=max(gdpPercap),min=min(gdpPercap))
-
-```
 #Compute a trimmed mean of life expectancy for different years. Or a weighted mean, weighting by population. Just try something other than the plain vanilla mean.
 
 ```{r}
 gapminder %>% 
   group_by(year) %>% 
- mutate(wm= weighted.mean(lifeExp,pop)) %>%  #Coumputed the weighted mean of lifeExp.
-knitr::kable()
+ transmute(wm= weighted.mean(lifeExp,pop)) %>%  #Coumputed the weighted mean of lifeExp.
+ knitr::kable()
+  
+gapminder %>% 
+  group_by(year) %>% 
+ transmute(wm= weighted.mean(lifeExp,pop)) %>% 
+ggplot(aes(year,wm))+
+  geom_point(color="red")+ 
+  geom_line()+ # creates linegraph of weighted lifeExp
+  ggtitle("       Weighted lifExp over the Years")+   #added title
+  xlab("Year")+ #x-axis lable
+  ylab("Weighted Mean") #y-axis lable
 
  
 ```
+#Comments:
 
+#Graph depicts the weighted mean of lifeExp over the years.
 
+#easliy computed the weighted mean using weighted.mean() function which i learnt during the development of this code.
 
 
 
@@ -97,3 +102,22 @@ facet_wrap(~continent,scales="free_x")+
 #Output shows that most of the countires in Africa and Asia have life expactancy less than the mean life Expactancy.
 
 #It was interesting to develop this code that made me think how I should count the countries in each continent that have lifeExp less than the mean LifeExp and creat an appropriate graph for it using facet_wrap.
+
+
+
+#To Get the maximum and minimum of GDP per capita for all continents.
+
+
+```{r}
+ gapminder %>% 
+  group_by(continent) %>% 
+ summarise(max=max(gdpPercap),min=min(gdpPercap)) #to find max and min gdp per capita.
+
+
+```
+
+#Comments:
+
+#Easy to find the max and min GDP per capita for all continents.
+
+#Unsure how to develop a ggplot for it.
