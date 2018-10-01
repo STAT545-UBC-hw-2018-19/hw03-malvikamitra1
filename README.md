@@ -1,5 +1,5 @@
 # hw03-malvikamitra1
-hw03-malvikamitra1 created by GitHub Classroom
+
 # File overview
 
 | File name | Comment |
