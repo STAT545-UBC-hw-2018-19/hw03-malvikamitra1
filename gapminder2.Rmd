@@ -22,7 +22,9 @@ library(gapminder)
 ```{r}
 gapminder %>% 
   group_by(year) %>% 
- mutate(wm= weighted.mean(lifeExp,pop))
+ mutate(wm= weighted.mean(lifeExp,pop)) %>%  #Coumputed the weighted mean of lifeExp.
+knitr::kable()
+
  
 ```
 
@@ -34,8 +36,8 @@ gapminder %>%
 
 ```{r}
 gapminder %>% 
-  group_by(continent,lifeExp,year)
-  
+  group_by(continent,lifeExp,year) %>%  #grouping by continent, lifeExp and year
+  knitr::kable()
 
 gapminder %>% 
   ggplot(aes(lifeExp))+ #to develop a ggplot with lifeExp on x-axis. 
