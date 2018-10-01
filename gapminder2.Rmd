@@ -47,7 +47,7 @@ gapminder %>%
 gapminder %>% 
   ggplot(aes(lifeExp))+ #to develop a ggplot with lifeExp on x-axis. 
   geom_histogram(aes(fill=continent),bins=30)+ #developed a binned histogram  with each continent having its                                                        separate colour.
-  ggtitle("Life Expactancy over the Years")+ #added title
+  ggtitle("    Life Expactancy over the Years")+ #added title
   xlab("LifeExp")+ #x-axis label
   ylab("Frequency")+ #y-axis label
   facet_wrap(~year,scales="free_x") #created individual plots for each year in the Gapminder dataset with                                         their individual scales.
@@ -88,7 +88,7 @@ ggplot(aes(year))+
 facet_wrap(~continent,scales="free_x")+
   #returns the plot for each continent separately with their own individual scales
 
-  geom_bar()+ 
+  geom_bar(fill="pink")+ 
   #creats the bar plot counting the countiries within each continent,for each year having lifeExp less than the mean lifeExp. 
   ggtitle("count of lifeExp less than the mean lifeExp")+ # added title
   xlab("Year")+ #x-axis lable
