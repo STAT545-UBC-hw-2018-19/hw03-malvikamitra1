@@ -9,7 +9,7 @@ library(gapminder)
 ```
 
 
-#Compute a trimmed mean of life expectancy for different years. Or a weighted mean, weighting by population. Just try something other than the plain vanilla mean.
+# Compute a trimmed mean of life expectancy for different years. Or a weighted mean, weighting by population. Just try something other than the plain vanilla mean.
 
 ```{r}
 gapminder %>% 
@@ -67,7 +67,7 @@ gapminder %>%
 
 
 
-#Report the absolute and/or relative abundance of countries with low life expectancy over time by continent: Compute some measure of worldwide life expectancy – you decide – a mean or median or some other quantile or perhaps your current age. Then determine how many countries on each continent have a life expectancy less than this benchmark, for each year.
+# Report the absolute and/or relative abundance of countries with low life expectancy over time by continent: Compute some measure of worldwide life expectancy – you decide – a mean or median or some other quantile or perhaps your current age. Then determine how many countries on each continent have a life expectancy less than this benchmark, for each year.
 
 ```{r}
 gapminder %>% 
@@ -105,7 +105,7 @@ facet_wrap(~continent,scales="free_x")+
 
 
 
-#To Get the maximum and minimum of GDP per capita for all continents.
+# To Get the maximum and minimum of GDP per capita for all continents.
 
 
 ```{r}
