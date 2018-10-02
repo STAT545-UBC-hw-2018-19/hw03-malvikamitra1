@@ -5,7 +5,7 @@ output: html_document
 
 ```{r}
 library(tidyverse)
-library(gapminder)
+library(gapminder) 
 ```
 
 
@@ -106,18 +106,27 @@ facet_wrap(~continent,scales="free_x")+
 
 
 # To Get the maximum and minimum of GDP per capita for all continents.
-
+ 
 
 ```{r}
  gapminder %>% 
   group_by(continent) %>% 
  summarise(max=max(gdpPercap),min=min(gdpPercap)) #to find max and min gdp per capita.
 
-
+gapminder %>% 
+  group_by(continent) %>% 
+ summarise(max=max(gdpPercap),min=min(gdpPercap)) %>% 
+  ggplot()+
+  geom_point(aes(continent,max),color="orange")+ #creates scatterplot of min and max                                                     gdpPercap
+  geom_point(aes(continent,min),color="blue")+
+  ggtitle("    Max and Min GDP per continent")+   #added title
+  xlab("Continent")+ #x-axis lable
+  ylab("gdpPercap") #y-axis lable
 ```
+
 
 #Comments:
 
 #Easy to find the max and min GDP per capita for all continents.
 
-#Unsure how to develop a ggplot for it.
+#Ploted the joint scatter plot of the max and min GDP per capita of each continent.
