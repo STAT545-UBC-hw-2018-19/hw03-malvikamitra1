@@ -9,4 +9,4 @@
 | gapminder2.html | hw03 RMarkdown work file |
 | gapminder2_files/figure-html | plots included in the markdown file |
 | Readme.md | This file |
-| Readme.html | HTML version |
+
