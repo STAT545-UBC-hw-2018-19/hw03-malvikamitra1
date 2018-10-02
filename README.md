@@ -7,6 +7,6 @@
 | hw03-malvikamitra1.Rproj | RStudio project |
 | gapminder2.Rmd | hw03 Markdown output |
 | gapminder2.html | hw03 RMarkdown work file |
-| hw03_gapminder_files | plots included in the markdown file |
+| gapminder2_files/figure-html | plots included in the markdown file |
 | Readme.md | This file |
 | Readme.html | HTML version |
